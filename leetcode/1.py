@@ -34,22 +34,38 @@ class Solution(object):
 
     def two_sum2(self, nums, target):
         """
+        一遍哈希表法，时间复杂度O(n)
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
         """
-        n = len(nums) -1
-        i = 0
-        while i < n:
-            j = i + 1
-            if nums[i] + nums[j] == target:
-                print([i, j])
-                return [i, j]
-            i+=1
+        map = {}
+        n = len(nums)
+        for i in range(n):
+            res = target - nums[i]
+            if map.get(res) is not None:
+                return [map[res],i]
+            map[nums[i]] = i
+
+    def two_sum3(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        map = {}
+        n = len(nums)
+        for i in range(n):
+            map[nums[i]] = i
+
+        for j in range(n):
+            res = target - nums[j]
+            if map.get(res) is not None and j != map[res]:
+                return [j,map[res]]
 
 
 if __name__ == '__main__':
     nums = [2, 7, 11, 15]
     target = 18
     slt = Solution()
-    slt.two_sum2(nums, target)
+    print(slt.two_sum3(nums, target))

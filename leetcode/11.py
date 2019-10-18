@@ -20,6 +20,7 @@
 
 """
 
+
 class Solution(object):
     def max_area(self, height):
         """
@@ -29,9 +30,9 @@ class Solution(object):
         max_area = 0
         n = len(height)
         for i in range(n):
-            for j in range(i+1,n):
-                area = (j - i) * min(height[i],height[j])
-                max_area = max(max_area,area)
+            for j in range(i + 1, n):
+                area = (j - i) * min(height[i], height[j])
+                max_area = max(max_area, area)
         print(max_area)
         return max_area
 
@@ -43,23 +44,20 @@ class Solution(object):
         max_area = 0
         n = len(height)
         i = 0
-        j = n -1
+        j = n - 1
         while i < j:
             if height[i] < height[j]:
-                area = (j-i) * height[i]
-                i +=1
+                area = (j - i) * height[i]
+                i += 1
             else:
                 area = (j - i) * height[j]
-                j-=1
+                j -= 1
             max_area = max(max_area, area)
         print(max_area)
         return max_area
 
 
-
-
-
 if __name__ == '__main__':
-    height = [1,8,6,2,5,4,8,3,7]
+    height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
     slt = Solution()
     print(slt.max_area2(height))

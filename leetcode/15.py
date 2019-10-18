@@ -24,11 +24,11 @@ class Solution(object):
         """
         res_list = []
         n = len(nums)
-        for i in range(n-2):
-            for j in range(i+1,n-1):
-                for k in range(j+1,n):
+        for i in range(n - 2):
+            for j in range(i + 1, n - 1):
+                for k in range(j + 1, n):
                     if nums[i] + nums[j] + nums[k] == 0:
-                        res_list.append([nums[i],nums[j],nums[k]])
+                        res_list.append([nums[i], nums[j], nums[k]])
         print(res_list)
         return res_list
 
@@ -37,24 +37,24 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        res_list = []
         n = len(nums)
-        i = 0
-        j = 1
-        k = 2
-        while k < n:
-            if nums[i] + nums[j] + nums[k] == 0:
-                res_list.append([nums[i], nums[j], nums[k]])
-            i += 1
-            j += 1
-            k += 1
+        res_list = []
+        map = {}
+        for i in range(n):
+            map[nums[i]] = i
+        print(map)
+        for j in range(n):
+            for k in range(j+1,n):
+                res = - (nums[j] + nums[k])
+                if map.get(res) is not None and res != nums[j] != nums[k]:
+                    res_list.append([res,nums[j],nums[k]])
         print(res_list)
-        return res_list
 
+        for res in res_list:
 
 
 
 if __name__ == '__main__':
     nums = [-1, 0, 1, 2, -1, -4]
     slt = Solution()
-    slt.three_sum(nums)
+    slt.three_sum2(nums)
