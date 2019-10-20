@@ -53,12 +53,13 @@ def linked_list_has_cycle(head):
     :param head:
     :return:
     """
-    if head is None and head.next is None:
+    if head is None or head.next is None:
         return False
-    slow,fast = head,head
-    while fast is not None and fast.next is not None:
-        fast = fast.next.next
+    slow = head
+    fast = head
+    while fast.next is not None and fast.next.next is not None:
         slow = slow.next
+        fast = fast.next.next
         if slow == fast:
             return True
     return False
@@ -72,17 +73,23 @@ def linked_List_get_cycle_node(head):
     if head is None and head.next is None:
         return False
     slow,fast = head,head
+    is_cycle = False
     while fast is not None and fast.next is not None:
         fast = fast.next.next
         slow = slow.next
-        if slow == fast:break
+        if slow == fast:
+            is_cycle = True
+            break
     #如果是环链表
     #如果相遇了，那么把一个指针调整到头部，重新开始再相遇即可
-    fast = head
-    while fast != slow:
-        fast = fast.next
-        slow = slow.next
-    return fast
+    if is_cycle:
+        fast = head
+        while fast != slow:
+            fast = fast.next
+            slow = slow.next
+        return slow
+    else:
+        return False
 
 
 
