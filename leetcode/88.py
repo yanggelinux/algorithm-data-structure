@@ -166,6 +166,7 @@ class Solution(object):
 
 
 if __name__ == '__main__':
+    slt = Solution()
     # nums1 = [1, 2, 3, 0, 0, 0]
     # m = 3
     # nums2 = [2, 5, 6]
@@ -174,5 +175,5 @@ if __name__ == '__main__':
     m = 0
     nums2 = [1]
     n = 1
-    slt = Solution()
     slt.merge4(nums1, m, nums2, n)
+

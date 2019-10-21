@@ -39,16 +39,18 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        map = {}
         n = len(nums)
+        map = {}
         for i in range(n):
-            res = target - nums[i]
-            if map.get(res) is not None:
-                return [map[res],i]
-            map[nums[i]] = i
+            a = nums[i]
+            b = target - a
+            if b in map and map.get(b) != i:
+                return [map.get(b), i]
+            map[a] = i
 
     def two_sum3(self, nums, target):
         """
+         二遍哈希表法，时间复杂度O(n)
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
