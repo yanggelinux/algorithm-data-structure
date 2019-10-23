@@ -53,6 +53,7 @@ class Solution(object):
         tree_node = root
         while tree_node is not None or stack:
             while tree_node is not None:
+                #当前节点
                 res_list.append(tree_node.val)
                 stack.append(tree_node)
                 tree_node = tree_node.left

@@ -53,10 +53,13 @@ class Solution(object):
         stack1 = []
         while stack:
             tree_node = stack.pop()
+            #先检查左子节点，进栈
             if tree_node.left is not None:
                 stack.append(tree_node.left)
+            #再检查右子节点进栈
             if tree_node.right is not None:
                 stack.append(tree_node.right)
+            #获取stack1 的反序
             stack1.append(tree_node)
         while stack1:
             res_list.append(stack1.pop().val)
@@ -76,6 +79,7 @@ class Solution(object):
             color,tree_node = stack.pop()
             if tree_node is None:continue
             if color == white:
+                #入栈方式，正好和 递归方式的顺序相反。
                 stack.append((grey,tree_node))
                 stack.append((white,tree_node.right))
                 stack.append((white,tree_node.left))
