@@ -64,10 +64,9 @@ class Solution(object):
         if n == 0:return 1
         sub_res = self.divide(x,n//2)
         if n % 2 == 1:
-            sub_res = sub_res * sub_res * x
+            return sub_res * sub_res * x
         else:
-            sub_res = sub_res * sub_res
-        return sub_res
+            return sub_res * sub_res
 
 
 

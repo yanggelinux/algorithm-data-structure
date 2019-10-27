@@ -28,16 +28,16 @@ def merge(left_arr,right_arr):
     while 1:
         if left_arr and right_arr:
             if left_arr[0] > right_arr[0]:
-                min_nun,right_arr = right_arr[0],right_arr[1:]
+                min_num,right_arr = right_arr[0],right_arr[1:]
             else:
-                min_nun,left_arr = left_arr[0],left_arr[1:]
+                min_num,left_arr = left_arr[0],left_arr[1:]
         elif left_arr and not right_arr:
-            min_nun, left_arr = left_arr[0], left_arr[1:]
+            min_num, left_arr = left_arr[0], left_arr[1:]
         elif right_arr and not left_arr:
-            min_nun, right_arr = right_arr[0], right_arr[1:]
+            min_num, right_arr = right_arr[0], right_arr[1:]
         else:
             break
-        result.append(min_nun)
+        result.append(min_num)
     return result
 
 if __name__ == '__main__':
