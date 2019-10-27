@@ -52,7 +52,6 @@ class Solution(object):
         :param letter:
         :return:
         """
-        print("next:",next_digit, "s:",s)
         if len(next_digit) == 0:
             self.res.append(s)
             return s
