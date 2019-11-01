@@ -51,7 +51,7 @@ def DFS(self, tree):
 
 		process (node)
 		nodes = generate_related_nodes(node)
-		stack.push(nodes)
+		stack.append(nodes)
 
 	# other processing work
 	...
