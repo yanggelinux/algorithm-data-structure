@@ -54,7 +54,7 @@ class Solution(object):
         """
         if len(next_digit) == 0:
             self.res.append(s)
-            return s
+            return
         for letter in self.map[next_digit[0]]:
             self.helper(s + letter,next_digit[1:])
 

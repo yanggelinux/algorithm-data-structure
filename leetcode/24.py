@@ -43,6 +43,19 @@ class Solution(object):
             tmp2.next = tmp1
             prev_head = prev_head.next.next
         return p_head.next
+    def swapPairs2(self, head):
+        """
+        递归法recursion
+        给定 1->2->3->4, 你应该返回 2->1->4->3.
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if head is None or head.next is None:
+            return head
+        next = head.next
+        head.next = self.swapPairs(next.next)
+        next.next = head
+        return next
 
 
 
