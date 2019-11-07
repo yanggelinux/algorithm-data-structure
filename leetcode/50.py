@@ -36,23 +36,22 @@ class Solution(object):
             j = -n
         res = float(1)
         for i in range(j):
-            res = res * float(x)
+            res = res * x
         if n < 0:
             res = 1 / res
         return res
 
     def myPow2(self, x, n):
         """
-        分治法时间复杂度O(logn)
         :type x: float
         :type n: int
         :rtype: float
         """
-        x = float(x)
         if n < 0:
-            x = float(1/x)
+            x = 1/x
             n = -n
         return self.divide(x,n)
+
     def divide(self,x,n):
         """
         分治
@@ -67,6 +66,8 @@ class Solution(object):
             return sub_res * sub_res * x
         else:
             return sub_res * sub_res
+
+
 
 
 

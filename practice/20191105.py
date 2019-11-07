@@ -15,6 +15,7 @@ class Solution(object):
         mid = len(arr) // 2
         left_arr = self.mergeSort(arr[:mid])
         right_arr = self.mergeSort(arr[mid:])
+        sorted(arr)
         return self.merge(left_arr,right_arr)
     def merge(self,left_arr,right_arr):
         """
@@ -62,7 +63,7 @@ class Solution(object):
         if n < 0:
             x = 1/x
             n = -n
-        return self.divide(x,n)   
+        return self.divide(x,n)
 
     def divide(self,x,n):
         """

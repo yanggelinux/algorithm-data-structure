@@ -17,6 +17,7 @@
 ]
 """
 
+
 class Solution(object):
     def permute(self, nums):
         """
@@ -25,23 +26,22 @@ class Solution(object):
         """
         results = []
         n = len(nums)
+
         def backtrack(start=0):
             if start == n:
                 if nums not in results:
                     results.append(nums[:])
-            for i in range(start,n):
-                nums[start],nums[i] = nums[i],nums[start]
-                backtrack(start+1)
+            for i in range(start, n):
                 nums[start], nums[i] = nums[i], nums[start]
+                backtrack(start + 1)
+                # 状态回到之前
+                nums[start], nums[i] = nums[i], nums[start]
+
         backtrack()
         return results
 
 
-
-
-
-
 if __name__ == '__main__':
     slt = Solution()
-    nums = [1,2,3]
+    nums = [1, 1, 2, 3]
     print(slt.permute(nums))
