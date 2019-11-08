@@ -1,37 +1,15 @@
 # -*- coding: utf8 -*-
 
-
+"""
+我们有一个背包，背包的承载重量是Wkg。
+现在我们有n个物品，每个物品的重量不等，并且不可分割。
+我们现在期望选择几件物品，装到背包中。
+在不超过背包所能装载重量的前提下，如何让背包中物品的总重量最大
+"""
 class Solution(object):
 
     def __init__(self):
-        self.res_list = []
         self.max_weight = -1
-
-    def backtrack(self, start, nums):
-        """
-        回溯
-        :param start:
-        :return:
-        """
-        n = len(nums)
-        if start == n:
-            if nums not in self.res_list:
-                self.res_list.append(nums[:])
-        for i in range(start, n):
-            # 调换位置
-            nums[start], nums[i] = nums[i], nums[start]
-            self.backtrack(start + 1, nums)
-            # 恢复状态
-            nums[start], nums[i] = nums[i], nums[start]
-
-    def permute(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        start = 0
-        self.backtrack(start, nums)
-        return self.res_list
 
     def pack(self, current_w, package_w, items, n, i):
         """
@@ -52,18 +30,12 @@ class Solution(object):
         if current_w + items[i] <= package_w:
             self.pack(current_w + items[i], package_w, items, n, i + 1)  # 第i+1个物品选择装进背包
 
-    def get_max(self):
-        return self.max_weight
-
 
 if __name__ == '__main__':
     slt = Solution()
-    # nums = [1, 2, 3]
-    # print(slt.permute(nums))
-    items = [2, 2, 4, 6, 3]
-    package_w = 9
+    items = [10, 20, 30, 40, 50]
+    package_w = 100
     current_w = 0
     n = len(items)
     i = 0
-    print(slt.pack(current_w, package_w, items, n, i))
-    print(slt.get_max())
+    slt.pack(current_w, package_w, items, n, i)
