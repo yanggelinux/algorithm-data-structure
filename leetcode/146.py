@@ -25,6 +25,30 @@ cache.get(3);       // 返回  3
 cache.get(4);       // 返回  4
 
 """
+import collections
+
+class LRUCache3(object):
+
+	def __init__(self, capacity):
+		self.dic = collections.OrderedDict()
+		self.remain = capacity
+
+	def get(self, key):
+		if key not in self.dic:
+			return -1
+		v = self.dic.pop(key)
+		self.dic[key] = v   # key as the newest one
+		return v
+
+	def put(self, key, value):
+		if key in self.dic:
+			self.dic.pop(key)
+		else:
+			if self.remain > 0:
+				self.remain -= 1
+			else:   # self.dic is full
+				self.dic.popitem(last=False)
+		self.dic[key] = value
 
 
 class LRUCache2(object):
@@ -114,14 +138,16 @@ class LRUCache(object):
         :type value: int
         :rtype: None
         """
-        size = len(self.data)
+
         if key in self.data:
             self.data.pop(key)
             self.data[key] = value
         else:
+            size = len(self.data)
             if size >= self._capacity:
                 del_key = list(self.data.keys())[0]
                 self.data.pop(del_key)
+                self._capacity -= 1
             self.data[key] = value
 
 
