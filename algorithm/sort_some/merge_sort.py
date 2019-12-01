@@ -15,6 +15,7 @@ def merge_sort(arr):
     mid = len(arr) // 2
     left_arr = merge_sort(arr[:mid])
     right_arr = merge_sort(arr[mid:])
+    print(left_arr,right_arr)
     return merge(left_arr,right_arr)
 
 def merge(left_arr,right_arr):
@@ -41,5 +42,5 @@ def merge(left_arr,right_arr):
     return result
 
 if __name__ == '__main__':
-    arr = [2, 5, 4, 6, 1, 3]
+    arr = [1,3,2,3,1]
     print(merge_sort(arr))
